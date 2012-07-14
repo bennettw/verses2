@@ -1,4 +1,6 @@
 Bible::Application.routes.draw do
+  resources :passages
+
   resources :verses
 
   # The priority is based upon order of creation:
