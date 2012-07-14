@@ -7,5 +7,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_column :passages, :user_id, :integer
   end
 end
