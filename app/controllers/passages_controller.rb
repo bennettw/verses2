@@ -14,6 +14,7 @@ class PassagesController < ApplicationController
   # GET /passages/1.json
   def show
     @passage = Passage.find(params[:id])
+    @verses = @passage.verses
 
     respond_to do |format|
       format.html # show.html.erb
