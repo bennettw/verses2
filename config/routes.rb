@@ -1,4 +1,6 @@
 Bible::Application.routes.draw do
+  resources :users
+
   resources :passages
 
   resources :verses
