@@ -1,9 +1,3 @@
-added passages model and linked it up to verses, but i'm thinking that's stupid
-
-why not just have a passage? it stores the reference, and can make just one api call to look up the 
-verse. i can add in verse later so i can correlate and see which passages overlap, but that's more
-complicated and not core functionality
-
 Passage
   Date discovered
   Text
@@ -15,4 +9,4 @@ and that's it.
 Next:
   flesh out passage, and add in API fetching 
   OR
-  add users and associate them with passage
+  add the ability to add verses from the passage screen in the passage edit view
