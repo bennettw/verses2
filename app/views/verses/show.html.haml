@@ -1,0 +1,19 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @verse.book
+%p
+  %b Chapter:
+  = @verse.chapter
+%p
+  %b Number:
+  = @verse.number
+
+%p
+  %b Discovery:
+  = @verse.discovery
+
+= link_to 'Edit', edit_verse_path(@verse)
+\|
+= link_to 'Back', verses_path

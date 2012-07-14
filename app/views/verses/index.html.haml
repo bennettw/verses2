@@ -1,0 +1,25 @@
+%h1 Listing verses
+
+%table
+  %tr
+    %th Book
+    %th Chapter
+    %th Number
+    %th Discovery
+    %th
+    %th
+    %th
+
+  - @verses.each do |verse|
+    %tr
+      %td= verse.book
+      %td= verse.chapter
+      %td= verse.number
+      %td= verse.discovery
+      %td= link_to 'Show', verse
+      %td= link_to 'Edit', edit_verse_path(verse)
+      %td= link_to 'Destroy', verse, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Verse', new_verse_path

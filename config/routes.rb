@@ -1,4 +1,6 @@
 Bible::Application.routes.draw do
+  resources :verses
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
