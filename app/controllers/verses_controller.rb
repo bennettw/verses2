@@ -1,3 +1,5 @@
+# This controller will be mostly obsolete by the time Passage is implemented
+
 class VersesController < ApplicationController
   # GET /verses
   # GET /verses.json

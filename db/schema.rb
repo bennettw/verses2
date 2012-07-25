@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714044607) do
+ActiveRecord::Schema.define(:version => 20120725181849) do
 
   create_table "passages", :force => true do |t|
     t.date     "discovery"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20120714044607) do
     t.string   "book"
     t.integer  "chapter"
     t.integer  "number"
-    t.date     "discovery"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "passage_id"
