@@ -9,4 +9,5 @@ and that's it.
 Next:
   flesh out passage, and add in API fetching 
   OR
-  add the ability to add verses from the passage screen in the passage edit view
+->add the ability to add verses from the passage screen in the passage edit view
+    Need to figure out how to create a verse, maybe use reference and then parse from there?

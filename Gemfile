@@ -5,6 +5,8 @@ gem 'rails', '3.1.0'
 gem 'haml-rails'
 gem 'rspec'
 gem 'rspec-rails'
+gem 'rest-client'
+gem 'xml-simple'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
