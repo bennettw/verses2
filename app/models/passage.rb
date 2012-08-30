@@ -11,6 +11,7 @@ class Passage < ActiveRecord::Base
   attr_reader :text
   attr_reader :doc
 
+
   # reference setter
   def user_reference=(str)
     @user_reference = str
@@ -40,18 +41,28 @@ class Passage < ActiveRecord::Base
     puts "api ref = #{@reference}"
     doc.elements.each("*/passage/content/verse-unit") do |elt|
         # remove crap
-        #e.elements["begin-paragraph"].replace_with REXML::Element.new "p"
-        #or
-        #elt.elements.delete_all <tag name>, like
-        #elt.elements.delete_all "begin-paragraph"
+        # TODO: handle <woc> element that contains text, words of Christ!
+        #       handle html escape chars, like &dblquote;
+        elt.elements.delete_all 'heading'
+        elt.elements.delete_all 'marker'
+        elt.elements.delete_all 'begin-paragraph'
+        elt.elements.delete_all 'footnote'
+        elt.elements.delete_all 'woc/footnote'
+        elt.elements.delete_all 'end-paragraph'
+        elt.elements.delete_all 'begin-block-indent'
+        elt.elements.delete_all 'begin-line'
+        elt.elements.delete_all 'end-line'
+        elt.elements.delete_all 'end-block-indent'
+
         verse_num = elt.elements['verse-num'].text
-        verse_text = elt.children.to_s
+        elt.elements.delete_all 'verse-num' 
+        verse_text = elt.children.join " "
         puts "#{chapter}:#{verse_num}: #{verse_text}"
         v = Verse.new
         v.book = chapter
         v.number = verse_num
         v.text = verse_text
-        verses << v
+        verses << v # TODO: throws an error if this object isn't saved 
     end
   end
 
