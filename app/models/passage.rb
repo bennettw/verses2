@@ -17,7 +17,7 @@ class Passage < ActiveRecord::Base
     parse_reference 
   end
 
-  def parse_reference_xml
+  def parse_reference
    # bad: make the api call here
    # then when it returns get the verses from the api result
    
@@ -39,8 +39,13 @@ class Passage < ActiveRecord::Base
     chapter = doc.elements["*/passage/surrounding-chapters/current"].text
     puts "api ref = #{@reference}"
     doc.elements.each("*/passage/content/verse-unit") do |elt|
+        # remove crap
+        #e.elements["begin-paragraph"].replace_with REXML::Element.new "p"
+        #or
+        #elt.elements.delete_all <tag name>, like
+        #elt.elements.delete_all "begin-paragraph"
         verse_num = elt.elements['verse-num'].text
-        verse_text = elt.text
+        verse_text = elt.children.to_s
         puts "#{chapter}:#{verse_num}: #{verse_text}"
         v = Verse.new
         v.book = chapter
@@ -50,7 +55,7 @@ class Passage < ActiveRecord::Base
     end
   end
 
-  def parse_reference
+  def parse_reference_del
    # bad: make the api call here
    # then when it returns get the verses from the api result
    
