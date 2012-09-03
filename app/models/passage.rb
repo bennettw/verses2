@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: passages
+#
+#  id             :integer          not null, primary key
+#  discovery      :date
+#  created_at     :datetime
+#  updated_at     :datetime
+#  user_id        :integer
+#  reference      :string(255)
+#  user_reference :string(255)
+#  text           :string(255)
+#
+
 require 'rubygems'
 require 'rest-client'
 
@@ -22,7 +36,7 @@ class Passage < ActiveRecord::Base
       v = Verse.new
       v.chapter = verse[:chapter]
       v.number = verse[:number]
-      @text << verse[:text]
+      v.text = verse[:text]
     end
   end
 end

@@ -7,6 +7,7 @@ gem 'rspec'
 gem 'rspec-rails'
 gem 'rest-client'
 gem 'xml-simple'
+gem 'annotate', ">=2.5.0"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
