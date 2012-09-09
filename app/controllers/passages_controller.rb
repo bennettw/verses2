@@ -14,7 +14,9 @@ class PassagesController < ApplicationController
   # GET /passages/1.json
   def show
     @passage = Passage.find(params[:id])
+    @passage.fetch unless @passage.text  
     @passage_text = @passage.text
+    
     # @verses = @passage.verses
 
     respond_to do |format|

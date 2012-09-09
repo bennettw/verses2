@@ -24,8 +24,9 @@ class Passage < ActiveRecord::Base
   def fetch
     puts "fetch called on passage id #{id}: #{reference}"
     @api = Esvapi.new unless @api
-    @api.query self.reference
-    parse @api.massage_query_results
+    @api.query reference
+    self.text = parse @api.massage_query_results
+    self.save
   end
 
   private
