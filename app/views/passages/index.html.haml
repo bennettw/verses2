@@ -3,6 +3,8 @@
 %table
   %tr
     %th Discovery
+    %th Passage
+    %th Text
     %th
     %th
     %th
@@ -10,6 +12,8 @@
   - @passages.each do |passage|
     %tr
       %td= passage.discovery
+      %td= passage.reference
+      %td= passage.text
       %td= link_to 'Show', passage
       %td= link_to 'Edit', edit_passage_path(passage)
       %td= link_to 'Destroy', passage, :confirm => 'Are you sure?', :method => :delete
