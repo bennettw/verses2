@@ -3,11 +3,12 @@
 %p
   %b Discovery:
   = @passage.discovery
-  %b Verses:
-  %ul
-    - @verses.each do |v|
-      %li= "#{v.chapter}:#{v.number} -- #{v.text}"
   
+  %b Reference: 
+  = @passage.reference
+
+  %b Text:
+  = @passage_text.html_safe
 
 = link_to 'Edit', edit_passage_path(@passage)
 \|

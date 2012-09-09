@@ -7,9 +7,11 @@ class Esvapi
   API_KEY = 'TEST'
 
   def query(ref)
-    # should this be a factory that makes EsvapiQuery objects, and those obejcts can be responsible for
+    # should this be a factory that makes EsvapiQuery objects, 
+    # and those obejcts can be responsible for
     # containing the different fields i care about
 
+    puts "looking up #{ref}"
     @response = RestClient.get BASE_URL,
       { 
         :params => { 
@@ -24,8 +26,8 @@ class Esvapi
 
   def massage_query_results(response=@response)
     doc = REXML::Document.new response
-    #puts response
-    #puts '========================='
+    puts response
+    puts '========================='
     reference = doc.elements["*/passage/reference"].text
     chapter = doc.elements["*/passage/surrounding-chapters/current"].text
     puts "api ref = #{reference}"
@@ -43,6 +45,7 @@ class Esvapi
         elt.elements.delete_all 'begin-line'
         elt.elements.delete_all 'end-line'
         elt.elements.delete_all 'end-block-indent'
+        elt.elements.delete_all 'begin-chapter'
 
         verse_num = elt.elements['verse-num'].text
         elt.elements.delete_all 'verse-num' 
