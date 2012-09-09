@@ -28,6 +28,7 @@ class Passage < ActiveRecord::Base
     parse @api.massage_query_results
   end
 
+  private
   def parse(results)
     reference = results[:reference]
     text = String.new
