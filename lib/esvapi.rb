@@ -50,8 +50,12 @@ class Esvapi
         verse_num = elt.elements['verse-num'].text
         elt.elements.delete_all 'verse-num' 
         verse_text = elt.children.join " "
-        verse_text.gsub! "<woc>", ""
-        verse_text.gsub! "</woc>", ""
+        verse_text.gsub!("<woc>", "")
+        verse_text.gsub!("</woc>", "")
+        verse_text.gsub!("&lquot;", "'")
+        verse_text.gsub!("&rquot;", "'")
+        verse_text.gsub!("&rdblquot;", "\"")
+        verse_text.gsub!("&ldblquot;", "\"")
         puts "#{chapter}:#{verse_num}: #{verse_text}"
         results[:verses] << { :chapter => chapter, :number => verse_num, :text => verse_text }
     end

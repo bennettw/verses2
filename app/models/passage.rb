@@ -32,13 +32,13 @@ class Passage < ActiveRecord::Base
   private
   def parse(results)
     reference = results[:reference]
-    text = String.new
+    text = ""
     results[:verses].each do |verse|
       v = Verse.new
       v.chapter = verse[:chapter]
       v.number = verse[:number]
       v.text = verse[:text]
-      text = "#{text} #{v.text}"
+      text += v.text
     end
     text
   end
