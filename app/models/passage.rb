@@ -23,7 +23,7 @@ class Passage < ActiveRecord::Base
 
   def fetch
     puts "fetch called on passage id #{id}: #{reference}"
-    @api = Esvapi.new unless @api
+    @api ||= Esvapi.new
     @api.query reference
     self.text = parse @api.massage_query_results
     self.save
@@ -31,16 +31,16 @@ class Passage < ActiveRecord::Base
 
   private
   def parse(results)
-    reference = results[:reference]
-    text = ""
+    self.reference = results[:reference]
+    text = []
     results[:verses].each do |verse|
       v = Verse.new
       v.chapter = verse[:chapter]
       v.number = verse[:number]
       v.text = verse[:text]
-      text += v.text
+      text << v.text
     end
-    text
+    text.join(" ")
   end
 
 end
