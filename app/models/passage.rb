@@ -21,10 +21,17 @@ class Passage < ActiveRecord::Base
 # Don't do this for fields in teh DB. This will shortcircuit setting fields in the db.
 #  attr_accessor :reference, :text, :doc, :discovery
 
+  def user_reference=(ref)
+    #self.update_attribute 'user_reference', ref # infinite loop, must call this setter
+    write_attribute(:user_reference, ref)
+    fetch
+  end
+
   def fetch
-    puts "fetch called on passage id #{id}: #{reference}"
+    # should this be auto called when the user_reference field is set? why not for now 
+    puts "fetch called on passage id #{id}: #{user_reference}"
     @api ||= Esvapi.new
-    @api.query reference
+    @api.query user_reference
     self.text = parse @api.massage_query_results
     self.save
   end
