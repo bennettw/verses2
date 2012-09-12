@@ -39,7 +39,7 @@ class Passage < ActiveRecord::Base
   private
   def parse(results)
     self.reference = results[:reference]
-    text = []
+    text = [] # could probably use inject here
     results[:verses].each do |verse|
       v = Verse.new
       v.chapter = verse[:chapter]
