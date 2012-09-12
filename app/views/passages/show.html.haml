@@ -1,12 +1,11 @@
 %p#notice= notice
 
-%h2= @passage.reference
-%p
-  %b Discovery:
-  = @passage.discovery
-  
-  %b Text:
-  = @passage_text
+%h1= @passage.reference
+
+%p= @passage_text
+
+%h3 Dates:
+%p= @passage.discovery
 
 = link_to 'Edit', edit_passage_path(@passage)
 \|
