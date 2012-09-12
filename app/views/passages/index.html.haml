@@ -1,18 +1,18 @@
-%h1 Listing passages
+%h1 Your verses
 
 %table
   %tr
-    %th Discovery
+    %th
+    %th Date
     %th Passage
     %th Text
-    %th
 
   - @passages.each do |passage|
     %tr
+      %td= link_to 'X', passage, :confirm => 'Are you sure?', :method => :delete
       %td= passage.discovery
       %td= link_to passage.reference, passage
       %td= passage.text
-      %td= link_to 'Destroy', passage, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
