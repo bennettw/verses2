@@ -1,12 +1,13 @@
-Passage
-  Date discovered
-  Text
-  Notes/comments
-  User
-
-and that's it.
-
 Next:
   x add the ability to add verses from the passage screen in the passage edit view
     x can't get the ui to save the user_refernece field--deleted accessors
-  -> clean up the ui 
+  x clean up the ui 
+
+-> Add login/auth
+Then load up a bunch of data
+Enable sorting by verse or date
+Make esv explicit
+Add searching
+Add settings page
+Add landing/splash page
+Register domain/launch
