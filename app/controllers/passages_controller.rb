@@ -2,7 +2,7 @@ class PassagesController < ApplicationController
   # GET /passages
   # GET /passages.json
   def index
-    @passages = Passage.all
+    @passages = Passage.all :order => 'discovery DESC'
 
     respond_to do |format|
       format.html # index.html.erb
