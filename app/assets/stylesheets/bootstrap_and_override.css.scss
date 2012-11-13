@@ -1,4 +1,29 @@
 @import "bootstrap";
 body { padding: 20px;
        padding-top: 60px; }
+
+th {
+  padding-top: 20px;
+  border-bottom: 1px solid black;
+  text-align: left;
+}
+td {
+  padding: 5px;
+}
+td.nowrap {
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+a.delete {
+  background-color: gray;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 4px;
+  font-size: 75%;
+  font-weight: 700;
+}
+a.delete:hover {
+  background-color: darkred;
+}
 @import "bootstrap-responsive"

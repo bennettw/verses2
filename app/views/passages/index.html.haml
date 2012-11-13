@@ -1,17 +1,17 @@
 %h1 Your verses
 
 %table
-  %tr
-    %th
-    %th Date
-    %th Passage
-    %th Text
-
+  
+  - previous = nil
   - @passages.each do |passage|
+    - if passage.discovery != previous 
+      %tr
+        %th{:colspan => 4}= passage.discovery.to_s(:long)
+        - previous = passage.discovery
     %tr
-      %td= link_to 'X', passage, :confirm => 'Are you sure?', :method => :delete
-      %td= passage.discovery
-      %td= link_to passage.reference, passage
+      %td= link_to 'X', passage, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this passage'
+      /%td= passage.discovery
+      %td.nowrap= link_to passage.reference, passage
       %td= passage.text
 
 %br
