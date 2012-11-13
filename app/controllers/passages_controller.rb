@@ -3,9 +3,32 @@ class PassagesController < ApplicationController
   # GET /passages.json
   def index
     @passages = Passage.all :order => 'discovery DESC'
+    @range = :all
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @passages }
+    end
+  end
+
+  def thisweek
+    @one_week_ago = 1.week.ago.to_date
+    @passages = Passage.where("discovery >= ?", @one_week_ago) 
+    @range = :thisweek
+
+    respond_to do |format|
+      format.html { render "index" }
+      format.json { render json: @passages }
+    end
+  end
+
+  def thismonth
+    @one_month_ago = 1.month.ago.to_date
+    @passages = Passage.where("discovery >= ?", @one_month_ago) 
+    @range = :thismonth
+
+    respond_to do |format|
+      format.html { render "index" }
       format.json { render json: @passages }
     end
   end

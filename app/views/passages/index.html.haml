@@ -1,4 +1,27 @@
-%h1 Your verses
+#page-header
+  %h1 Your Verses
+
+#passages-filter
+  .navbar
+    .navbar-inner
+      %a.brand
+        %small Filter by
+      %ul.nav
+        %li{class:@range == :thisweek && "active"}
+          %a{:href => '/passages/thisweek'}
+            This Week
+        %li{class:@range == :thismonth && "active"}
+          %a{:href => '/passages/thismonth'}
+            This Month
+        %li{class:@range == :all && "active"}
+          %a{:href => passages_path}
+            All Time
+      /
+        %li
+          %form.navbar-search
+            %input.search-query{:type => "text"}
+            %button.btn{:type => "submit"}
+              Search
 
 = link_to 'New Passage', new_passage_path
 

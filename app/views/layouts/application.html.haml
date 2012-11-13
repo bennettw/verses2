@@ -1,0 +1,25 @@
+!!!
+%head
+  %title Verse Tracker
+  =stylesheet_link_tag    "application"
+  =javascript_include_tag "application"
+  =csrf_meta_tags
+
+%body
+  %header.container
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        %a.brand{ :href => "#", :title =>  "Verse Tracker" }
+          Verse Tracker
+        %ul.nav.pull-right
+          %li
+            %a
+              Settings
+          %li
+            %a
+              Login
+
+  #content.container
+    =yield
+
+
