@@ -4,6 +4,8 @@ Bible::Application.routes.draw do
   match "passages/thisweek" => "passages#thisweek"
   match "passages/thismonth" => "passages#thismonth"
   resources :passages
+  resource :user_session
+  resources :users
 
 #  resources :verses
 
