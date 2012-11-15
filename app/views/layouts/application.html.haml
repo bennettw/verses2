@@ -11,14 +11,17 @@
       .navbar-inner
         %a.brand{ :href => "#", :title =>  "Verse Tracker" }
           Verse Tracker
-        %ul.nav.pull-right
-          %li
-            %a
-              Settings
-          %li
-            =link_to "Register", new_user_path
-          %li
-            =link_to "Login", login_path
+        %ul.nav.pull-right#user_nav
+          - if current_user
+            %li
+              =link_to "Settings", edit_user_path(current_user)
+            %li
+              =link_to "Logout", logout_path
+          - else
+            %li
+              =link_to "Register", new_user_path
+            %li
+              =link_to "Login", login_path
 
   #content.container
     =yield

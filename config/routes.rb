@@ -8,7 +8,7 @@ Bible::Application.routes.draw do
   match "login" => "user_sessions#create"
   match "logout" => "user_sessions#destroy"
   resources :passages
-  resources :users
+
 
 #  resources :verses
 
