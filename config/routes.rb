@@ -5,7 +5,7 @@ Bible::Application.routes.draw do
 
   match "passages/thisweek" => "passages#thisweek"
   match "passages/thismonth" => "passages#thismonth"
-  match "login" => "user_sessions#create"
+  match "login" => "user_sessions#new"
   match "logout" => "user_sessions#destroy"
   resources :passages
 
