@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   has_many :passages
 
   acts_as_authentic do |config|
-    config.crypto_provider = Authlogic::CryptoProviders::Sha256
+    #config.crypto_provider = Authlogic::CryptoProviders::Sha256
   end
 end

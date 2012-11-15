@@ -16,8 +16,9 @@
             %a
               Settings
           %li
-            %a
-              Login
+            =link_to "Register", new_user_path
+          %li
+            =link_to "Login", login_path
 
   #content.container
     =yield
