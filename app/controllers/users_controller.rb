@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # TODO: add require_admin helper in the application controller
+
   # GET /users
   # GET /users.json
   def index
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = params[:id].nil? : current_user : User.find(params[:id])
   end
 
   # POST /users

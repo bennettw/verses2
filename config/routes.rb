@@ -9,6 +9,7 @@ Bible::Application.routes.draw do
   match "logout" => "user_sessions#destroy"
   resources :passages
 
+  # add root :to => 
 
 #  resources :verses
 

@@ -15,8 +15,19 @@ class ApplicationController < ActionController::Base
   def authenticate
     unless current_user
       flash[:notice] = "You're not logged in."
-      redirect_to new_user_session_path
+      redirect_to login_url
       return false
     end
   end
+
+
+  def require_user
+    unless current_user
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to login_url
+      # TODO: store in session the page they requested
+      return false
+    end
+  end
+
 end

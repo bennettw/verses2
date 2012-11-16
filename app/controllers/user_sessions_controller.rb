@@ -8,7 +8,8 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to user_path(current_user)
+      #redirect_to user_path(current_user)
+      redirect_to passages_path
     else
       render :action => :new
     end
@@ -17,6 +18,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     #redirect_to new_user_session_path
-    redirect_to "/passages"
+    redirect_to login_path
   end
 end
