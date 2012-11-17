@@ -1,15 +1,16 @@
 Bible::Application.routes.draw do
-  resources :user_sessions
-
-  resources :users
 
   match "passages/thisweek" => "passages#thisweek"
   match "passages/thismonth" => "passages#thismonth"
   match "login" => "user_sessions#new"
   match "logout" => "user_sessions#destroy"
+  match "profile" => "users#edit"
+
+  resources :user_sessions
+  resources :users
   resources :passages
 
-  # add root :to => 
+  root :to => "passages#index"
 
 #  resources :verses
 

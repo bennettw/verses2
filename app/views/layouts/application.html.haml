@@ -9,12 +9,12 @@
   %header.container
     .navbar.navbar-fixed-top
       .navbar-inner
-        %a.brand{ :href => "#", :title =>  "Verse Tracker" }
+        %a.brand{ :href => root_url, :title =>  "Verse Tracker" }
           Verse Tracker
         %ul.nav.pull-right#user_nav
           - if current_user
             %li
-              =link_to "Settings", edit_user_path(current_user)
+              =link_to "Settings", profile_path
             %li
               =link_to "Logout", logout_path
           - else

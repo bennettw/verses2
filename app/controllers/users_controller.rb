@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = params[:id].nil? : current_user : User.find(params[:id])
+    @user = params[:id].nil? ? current_user : User.find(params[:id])
   end
 
   # POST /users
