@@ -4,7 +4,7 @@ class PassagesController < ApplicationController
   # GET /passages
   # GET /passages.json
   def index
-    @passages = Passage.all :order => 'discovery DESC'
+    @passages = Passage.where :user_id => current_user.id
     @range = :all
 
     respond_to do |format|
@@ -15,7 +15,9 @@ class PassagesController < ApplicationController
 
   def thisweek
     @one_week_ago = 1.week.ago.to_date
-    @passages = Passage.where("discovery >= ?", @one_week_ago) 
+    @passages = Passage.where("discovery >= :discovery AND user_id = :user_id", 
+                              :discovery => @one_week_ago, 
+                              :user_id => current_user.id) 
     @range = :thisweek
 
     respond_to do |format|
@@ -26,7 +28,9 @@ class PassagesController < ApplicationController
 
   def thismonth
     @one_month_ago = 1.month.ago.to_date
-    @passages = Passage.where("discovery >= ?", @one_month_ago) 
+    @passages = Passage.where("discovery >= :discovery AND user_id = :user_id", 
+                              :discovery => @one_month_ago,
+                              :user_id => current_user.id) 
     @range = :thismonth
 
     respond_to do |format|
@@ -39,6 +43,13 @@ class PassagesController < ApplicationController
   # GET /passages/1.json
   def show
     @passage = Passage.find(params[:id])
+    
+    unless @passage.belongs_to_user(current_user)
+      #flash[:notice] = "The passage could not be found."
+      raise ActionController::RoutingError.new('The passage could not be found.')
+      #return false
+    end
+
     @passage.fetch unless @passage.text  
     @passage_text = @passage.text
     
@@ -54,6 +65,7 @@ class PassagesController < ApplicationController
   # GET /passages/new.json
   def new
     @passage = Passage.new
+    @passage.user_id = current_user.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -70,6 +82,7 @@ class PassagesController < ApplicationController
   # POST /passages.json
   def create
     @passage = Passage.new(params[:passage])
+    @passage.user_id = current_user.id
 
     respond_to do |format|
       if @passage.save

@@ -36,6 +36,10 @@ class Passage < ActiveRecord::Base
     self.save
   end
 
+  def belongs_to_user(user)
+    user.id == self.user_id
+  end
+
   private
   def parse(results)
     self.reference = results[:reference]
