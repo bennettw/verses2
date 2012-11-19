@@ -4,7 +4,10 @@ class PassagesController < ApplicationController
   # GET /passages
   # GET /passages.json
   def index
-    @passages = Passage.where :user_id => current_user.id
+    @passages = Passage.find(
+      :all, 
+      :conditions => ["user_id = ?", current_user.id], 
+      :order => "discovery DESC")
     @range = :all
 
     respond_to do |format|
