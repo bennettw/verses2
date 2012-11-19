@@ -26,4 +26,18 @@ a.delete {
 a.delete:hover {
   background-color: darkred;
 }
+
+#notice {
+  padding: 5px;
+}
+
+.alert-success {
+  border: 1px solid green;
+}
+
+#error_explanation {
+  padding: 5px;
+  border: 1px solid red;
+}
+
 @import "bootstrap-responsive"
