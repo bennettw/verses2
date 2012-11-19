@@ -14,6 +14,10 @@
         %ul.nav.pull-right#user_nav
           - if current_user
             %li
+              %a
+                Welcome 
+                =current_user.login
+            %li
               =link_to "Settings", profile_path
             %li
               =link_to "Logout", logout_path
