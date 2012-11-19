@@ -5,13 +5,13 @@ Next:
 
 x Add login/auth
 Clean up flash messages, they currently have no style; make header navbar smaller, incl username
--> Restrict passages to the logged in user
-  Somehow detect if a user is logged in go straight to the passages page, and if not then login page
+x Restrict passages to the logged in user
+x Somehow detect if a user is logged in go straight to the passages page, and if not then login page
 Update the user controller to use usernames instead of ids
 Then load up a bunch of data
 Enable sorting by verse or date
 Make esv explicit
 Add searching
-Add settings page
+x Add settings page
 Add landing/splash page
 Register domain/launch

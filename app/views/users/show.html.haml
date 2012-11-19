@@ -1,4 +1,5 @@
-%p#notice= notice
+- if notice
+  %p#notice.alert-success= notice
 
 %p
   %b Username:
@@ -10,6 +11,6 @@
   %b Email:
   = @user.email
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to 'Edit', profile_path
 \|
-= link_to 'Back', users_path
+= link_to 'Back', passages_path

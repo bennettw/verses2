@@ -13,6 +13,10 @@
 class User < ActiveRecord::Base
   has_many :passages
 
+  def to_param
+    'foo'
+  end
+
   acts_as_authentic do |config|
     #config.crypto_provider = Authlogic::CryptoProviders::Sha256
   end
