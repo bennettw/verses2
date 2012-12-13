@@ -55,7 +55,11 @@ class PassagesController < ApplicationController
 
     @passage.fetch unless @passage.text  
     @passage_text = @passage.text
-    
+
+    # rudimentary just displaying passages with identical refs, ideally we'd to any
+    # passages that contain the same verses
+    @similar =  Passage.where :reference => @passage.reference, :user_id => 1
+
     # @verses = @passage.verses
 
     respond_to do |format|
