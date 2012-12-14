@@ -56,6 +56,7 @@ class Esvapi
         verse_text.gsub!("&rquot;", "'")
         verse_text.gsub!("&rdblquot;", "\"")
         verse_text.gsub!("&ldblquot;", "\"")
+        verse_text.gsub!("&apos;", "'")
         puts "#{chapter}:#{verse_num}: #{verse_text}"
         results[:verses] << { :chapter => chapter, :number => verse_num, :text => verse_text }
     end

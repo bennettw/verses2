@@ -18,9 +18,11 @@ class PassagesController < ApplicationController
 
   def thisweek
     @one_week_ago = 1.week.ago.to_date
-    @passages = Passage.where("discovery >= :discovery AND user_id = :user_id", 
-                              :discovery => @one_week_ago, 
-                              :user_id => current_user.id) 
+    @passages = Passage.find(:all,
+      :conditions => ["discovery >= :discovery AND user_id = :user_id", 
+                      :discovery => @one_week_ago, 
+                      :user_id => current_user.id],
+      :order => "discovery DESC")
     @range = :thisweek
 
     respond_to do |format|
@@ -31,9 +33,12 @@ class PassagesController < ApplicationController
 
   def thismonth
     @one_month_ago = 1.month.ago.to_date
-    @passages = Passage.where("discovery >= :discovery AND user_id = :user_id", 
-                              :discovery => @one_month_ago,
-                              :user_id => current_user.id) 
+    @passages = Passage.find(
+      :all,
+      :conditions => ["discovery >= :discovery AND user_id = :user_id", 
+                      :discovery => @one_month_ago,
+                      :user_id => current_user.id],
+      :order => "discovery DESC")
     @range = :thismonth
 
     respond_to do |format|
