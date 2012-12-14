@@ -31,7 +31,7 @@
   - @passages.each do |passage|
     - if passage.discovery != previous 
       %tr
-        %th{:colspan => 4}= passage.discovery.to_s(:long)
+        %th{:colspan => 4}= passage.discovery.strftime("%B %-d, %Y, %A")
         - previous = passage.discovery
     %tr
       %td= link_to 'X', passage, :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this passage'
