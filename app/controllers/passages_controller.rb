@@ -58,7 +58,7 @@ class PassagesController < ApplicationController
 
     # rudimentary just displaying passages with identical refs, ideally we'd to any
     # passages that contain the same verses
-    @similar =  Passage.where :reference => @passage.reference, :user_id => 1
+    @similar =  Passage.where :reference => @passage.reference, :user_id => current_user.id
 
     # @verses = @passage.verses
 
