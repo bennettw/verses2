@@ -5,6 +5,8 @@ Then load up a bunch of data
 Enable sorting by verse or date
 Make esv explicit
 Add searching
-x Add settings page
 Add landing/splash page
+Fix mobile view
+Add paragraphs to passages
+Fix span class divine name
 Register domain/launch
